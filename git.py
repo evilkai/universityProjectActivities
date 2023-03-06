@@ -3,7 +3,7 @@ from random import randint
 
 
 for i in range(5):
-    numb = randint(243, 599)
+    numb = randint(243, 360)
     d =str(numb) + " days ago"
     with open("a.txt", 'a') as file:
         file.write("a")
