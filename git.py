@@ -11,8 +11,8 @@ for i in range(5):
     os.system('git commit --date="' + d +'" -m "commit"')
     os.system('git push origin main')
 
-    for i in range(randint(0,5)):
-        n2 = randint(numb-4,numb+4)
+    for i in range(randint(0,2)):
+        n2 = randint(numb-2,numb+1)
         v = str(n2) + " days ago"
         for i in range(randint(0,2)):
             with open("a.txt", 'a') as file:
