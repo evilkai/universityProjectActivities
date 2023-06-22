@@ -2,8 +2,8 @@ import os
 from random import randint
 
 
-for i in range(1):
-    numb = randint(243, 244)
+for i in range(20):
+    numb = randint(243, 260)
     d =str(numb) + " days ago"
     with open("a.txt", 'a') as file:
         file.write("a")
