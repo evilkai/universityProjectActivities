@@ -15,4 +15,4 @@ for i in range(1):
             file.write("a")
         os.system('git add .')
         os.system('git commit --date="' + d +'" -m "commit"')
-        os.system('git push origin master')
+        os.system('git push origin main')
