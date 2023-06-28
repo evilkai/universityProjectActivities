@@ -1,0 +1,95 @@
+{% extends 'main/client/base.html' %}
+
+{% block title %}
+Создание счета
+{% endblock %}
+
+
+{% block content %}
+{% load static %}
+
+<h1 class="text-dark">Здесь можно открыть счёт</h1>
+
+<hr class="featurette-divider">
+
+<form method="post">
+    {% csrf_token %}
+
+<div class="container">
+    <div class="row  justify-content-around">
+    
+    <div class="card" style="width: 18rem;">
+        <p class="card-text text-secondary text-center">Debit Card</p>
+        <img class="card-img-top" src="{% static 'images/cardDebit.png' %}" alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text">Ставка: 0,0 %</p>
+          </div>
+        {% if cDebit < 1 %}
+            <input type="submit" class="btn btn-success" value="Оформить" name="Debit"> <br>
+        {% endif %}  
+        {% if cDebit >= 1 %}
+            <input type="submit" class="btn btn-success" value="Достигнут лимит" disabled>
+            <br>
+        {% endif %}  
+    </div>
+
+    
+    <div class="card" style="width: 18rem;">
+        <p class="card-text text-secondary text-center">Save Card</p>
+        <img class="card-img-top" src="{% static 'images/cardSave.png' %}" alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text">Ставка: 0,2 %</p>
+          </div>
+        {% if cSave < 1 %}
+            <input type="submit" class="btn btn-success" value="Оформить" name="Save"> <br>
+        {% endif %}  
+        {% if cSave >= 1 %}
+            <input type="submit" class="btn btn-success" value="Достигнут лимит" disabled>
+            <br>
+        {% endif %}  
+    </div>
+
+
+    
+    <div class="card" style="width: 18rem;">
+        <p class="card-text text-secondary text-center">Credit Card</p>
+        <img class="card-img-top" src="{% static 'images/cardCredit.png' %}" alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text">Ставка: 2,2 %</p>
+            <p class="card-text">Сумма: 50 000 рублей</p>
+          </div>
+        {% if cCredit < 1 %}
+            <input type="submit" class="btn btn-success" value="Оформить" name="Credit"> <br>
+        {% endif %}  
+        {% if cCredit >= 1 %}
+            <input type="submit" class="btn btn-success" value="Достигнут лимит" disabled>
+            <br>
+        {% endif %}  
+    </div>
+
+    
+    <div class="card" style="width: 18rem;">
+        <p class="card-text text-secondary text-center">Special Credit Card</p>
+        <img class="card-img-top" src="{% static 'images/cardCreditSpecial.png' %}" alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text">Ставка: 1,8 %</p>
+            <p class="card-text">Сумма: до 500 000 рублей</p>
+          </div>
+        {% if cCredit < 1 %}
+            <a href="{% url 'creditrequest' %}" type="submit" class="btn btn-success" value="Оставить заявку" name="SpecialCredit">Оставить заявку</a> <br>
+        {% endif %}  
+        {% if cCredit >= 1 %}
+            <input type="submit" class="btn btn-success" value="Достигнут лимит" disabled>
+            <br>
+        {% endif %}  
+    </div>
+
+
+
+</div>
+</div>
+
+</form>
+
+
+{% endblock %}

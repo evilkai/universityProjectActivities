@@ -1,0 +1,53 @@
+{% extends 'main/client/base.html' %}
+
+{% block title %}
+Денежный перевод
+{% endblock %}
+
+
+{% block content %}
+<h1 class="text-dark">Сделать перевод</h1>
+
+
+
+<hr class="featurette-divider">
+{% if done == True %}
+<div class="alert alert-success" role="alert">
+  Перевод выполнен
+</div>
+{% endif %}
+
+
+<div class="container">
+    <h4>Выберите карту, с которой будет перевод: </h4>
+  <form method="post" style="width: 40%;">
+    {% csrf_token %}
+    <select class="form-select" aria-label="Default select example" name="senderCard">
+        <option selected>Выберите карту</option>
+        {% for card in cards %}
+        <option value={{card.cardNumber}}>{{card.cardNumber}}</option>
+        {% endfor %}
+      </select>
+<br>
+
+    <div class="form-group">
+    <h4>Введите карту, на которую будет перевод: </h4>
+      <label>Card: 1111 2222 3333 </label>
+      <input type="text"  maxlength="4" size="3" style="text-align: center;" name="receiverCard" placeholder="0000">
+    </div>
+
+<br>
+
+    <div class="form-group">
+    <h4>Введите сумму: </h4>
+      <input type="text"  maxlength="7" size="6" style="text-align: center;" name="amount">
+    </div>
+
+<br>
+
+<input type="submit" class="btn btn-success" value="Перевести">
+
+</form>
+</div>
+
+{% endblock %}

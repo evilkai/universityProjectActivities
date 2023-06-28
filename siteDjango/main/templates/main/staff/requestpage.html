@@ -1,0 +1,35 @@
+{% extends 'main/staff/base.html' %}
+
+{% block title %}
+Заявка
+{% endblock %}
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+    
+    <form method="post" style="padding: 0% 5%;">
+        {% csrf_token %}
+        
+        <h3 class="text-info">Заявка на кредитную карту:</h3>
+
+
+    <h3> {{ page.fullname }} </h3>
+    <br>
+    <h4> Дата рождения: {{ page.birthDate }} </h4>
+    <h4> Паспортные данные: {{ page.pasport }} </h4>
+    <h4>Номер телефона: {{page.tel}}</h4>
+    <br>
+    
+    <h2> Заявка на {{page.amount}} рублей</h2>
+    <h3> Цель: {{page.goal}} </h3>
+    
+        {% csrf_token %}
+        
+        
+            <br>
+            <input type="submit" class="btn btn-success" value="Одобрить">
+        
+        
+    </form>
+    
+{% endblock %} 

@@ -1,0 +1,53 @@
+{% extends 'main/client/base.html' %}
+
+{% block title %}
+Кредитование
+{% endblock %}
+
+
+{% block content %}
+{% load static %}
+
+<h1 class="text-dark">Кредитование </h1>
+
+<hr class="featurette-divider">
+
+
+<div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Рассчитайте кредит:</h2>
+      
+
+      <form method="post">
+        {% csrf_token %}
+        <br>
+          <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Желаемая сумма" name="cAmount" maxlength="7">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Период в месяцах" name="cPeriod" maxlength="3">
+            </div>
+          </div>
+        <br>
+                
+
+        <input type="submit" class="btn btn-secondary" value="Рассчитать">
+        <br>
+        <br>
+        <h3 class="card-text">Сумма: {{ amount }} <span class="text-muted"> в рублях</span> </h3>
+        <h3 class="card-text">Период: {{ period }} <span class="text-muted"> в месяцах</span></h3>
+        <h3 class="card-text">Платёж: {{ payment }} <span class="text-muted"> в рублях</span> </h3>
+        <h3 class="card-text">Ставка: {{ percent }} % <span class="text-muted"> / год</span></h3>
+
+      </form>
+    
+    
+    </div>
+    
+    <div class="col-md-5">
+      <img class="card-img-top" src="{% static 'images/cardCreditSpecial.png' %}" alt="Card image cap">
+    </div>
+  </div>
+  
+{% endblock %}
