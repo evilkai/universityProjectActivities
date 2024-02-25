@@ -1,0 +1,50 @@
+{% extends "main/client/base.html" %}
+
+
+{% block title %}Регистрация{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="conteiner">
+    <div class="row justify-content-md-center" style="width:100%; padding: 0% 20%;">
+
+    <form method="POST"  class="form-group justify-content-center">
+	{% csrf_token %}
+
+    <div class="form-group">
+          <label>Заполните данные: </label>
+          
+          <input type="text" class="form-control" placeholder="Логин" name="login">
+<br>
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Имя" name="firstName">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Фамилия" name="lastName">
+            </div>
+          </div>
+<br>
+
+          <div class="row">
+            <div class="col">
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Пароль" name="password1">
+            </div>
+            <div class="col">
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Повтор пароля" name="password2">
+            </div>
+          </div>
+          
+      
+    
+        </div>
+    
+    <br>
+
+
+
+
+	    <button type="submit" class="btn btn-success">Создать аккаунт</button>
+    </form>
+</div></div>
+{% endblock %}

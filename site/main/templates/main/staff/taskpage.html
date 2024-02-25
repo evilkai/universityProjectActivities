@@ -1,0 +1,54 @@
+{% extends 'main/staff/base.html' %}
+
+{% block title %}
+Задание
+{% endblock %}
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        {% if page.status == False %}
+            {% if page.deadlines >= date %}
+            <h4 class="text-info">Задание выполняется</h4>
+            
+            {% else  %}
+            <h4 class="text-danger">Задание провалено</h4>
+            {% endif %}
+        {% else %}
+        <h4 class="text-success">Задание выполнено</h4>
+        {% endif %}
+    </form>
+
+
+    <p> {{ page.task }} </p>
+    <p> Отдел: {{ page.group }} </p>
+    <p> Сроки: {{ page.deadlines }} </p>
+    
+    <!-- <form method="post">
+        {% csrf_token %}
+        <textarea type="text" placeholder="Оставьте комментарий" class="form-control"></textarea><br>
+        
+    </form> -->
+    <form method="post">
+        {% csrf_token %}
+        
+        {% if page.status == False %}
+            {% if page.forHeads == True %}
+                {% if user.is_staff  %}
+                    <textarea id="comment" type="text" name="com1" placeholder="Оставьте комментарий" class="form-control"></textarea><br>
+                    <input type="submit" class="btn btn-success" value="OK">
+                {% endif %}
+            {% else %}
+                <textarea id="comment" type="text" name="com1" placeholder="Оставьте комментарий" class="form-control"></textarea><br>
+                <input type="submit" class="btn btn-success" value="OK">
+            {% endif %}
+        {% else %}
+            <p>{{ page.userComplited }}</p>
+            <p> Комментарий: {{ page.comments }} </p>
+        {% endif %}
+    </form>
+    
+{% endblock %} 

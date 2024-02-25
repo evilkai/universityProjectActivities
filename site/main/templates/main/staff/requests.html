@@ -1,0 +1,36 @@
+{% extends 'main/staff/base.html' %}
+
+{% block title %}
+Заявки
+{% endblock %}
+
+{% block content %}
+<h1 class="text-dark">Заявки на кредитование:</h1>
+
+    {% csrf_token %}
+    {% for el in reqs %}
+        
+            {% if el.status == "На рассмотрении" %}
+            <div class="mt-2">
+            
+                
+                <hr class="featurette-divider">
+                
+                <h3 class="text-dark">{{ el.fullname }}</h3>
+                
+                <p>Сумма: {{el.amount}}</p>
+                <p>Цель: {{ el.goal }}</p>
+            </div>
+            <form id="nubexForm" method="post">
+                {% csrf_token %}
+                <a class="btn btn-secondary" href="{% url 'requestpage' el.id %}">К заявке</a>
+            </form>
+            {% endif %}
+        
+        
+        
+        
+        
+
+    {% endfor %}
+{% endblock %}
